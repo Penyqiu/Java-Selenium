@@ -1,0 +1,7 @@
+<suite name="XDD" verbose="1">
+    <test name="Group of group Test" preserve-order="true" thread-count="1" parallel="methods">
+      <classes>
+        <class name="testrailtests.AMPV3.ImportHolidayTests"/>
+      </classes>
+    </test>
+  </suite>
