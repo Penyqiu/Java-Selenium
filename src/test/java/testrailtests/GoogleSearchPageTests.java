@@ -41,23 +41,52 @@ public class GoogleSearchPageTests extends Initialization{
 
     @Test
     @TestRail(testCaseId = {})
+    public void checkIfCorrectResultPageIsOpened() throws InterruptedException
+    {
+
+        googleSearchPage.checkIfPageIsOpened();
+
+        googleSearchPage.confirm();
+
+        googleSearchPage.enterTextIntoInputAndSearchByKey("szukaj");
+
+        googleSearchPage.checkSearchResult("szukaj");
+
+    }
+
+
+    @Test
+    @TestRail(testCaseId = {})
     public void checkIfTypedWordIsSearched() throws InterruptedException
     {
         googleSearchPage.checkIfPageIsOpened();
         Thread thread = new Thread();
-        thread.sleep(1000);
+        // (1000);
         googleSearchPage.confirm();
-        thread.sleep(1000);
+       // (1000);
         googleSearchPage.enterTextIntoInputAndSearch("asd");
+
+    }
+
+    @Test
+    @TestRail(testCaseId = {})
+    public void checkIsSearchingByKeyboardIsWorking() throws InterruptedException
+    {
+        googleSearchPage.checkIfPageIsOpened();
+        Thread thread = new Thread();
+        // (1000);
+        googleSearchPage.confirm();
+        // (1000);
+        googleSearchPage.enterTextIntoInputAndSearchByKey("asd");
     }
 
     @Test
     @TestRail(testCaseId = {})
     public void checkAboutUsButton() throws InterruptedException
     {
-        thread.sleep(1000);
+       // (1000);
         googleSearchPage.confirm();
-        thread.sleep(1000);
+       // (1000);
         googleSearchPage.findAboutUsButtonAndCheckResult();
     }
 
@@ -65,9 +94,9 @@ public class GoogleSearchPageTests extends Initialization{
     @TestRail(testCaseId = {})
     public void checkPromoteButton() throws InterruptedException
     {
-        thread.sleep(1000);
+       // (1000);
         googleSearchPage.confirm();
-        thread.sleep(1000);
+       // (1000);
         googleSearchPage.findPromoteButtonAndCheckResult();
     }
 
@@ -75,9 +104,9 @@ public class GoogleSearchPageTests extends Initialization{
     @TestRail(testCaseId = {})
     public void checkForCompaniesButton() throws InterruptedException
     {
-        thread.sleep(1000);
+       // (1000);
         googleSearchPage.confirm();
-        thread.sleep(1000);
+       // (1000);
         googleSearchPage.findForCompaniesButtonAndCheckResult();
     }
 
@@ -85,9 +114,9 @@ public class GoogleSearchPageTests extends Initialization{
     @TestRail(testCaseId = {})
     public void checkHowBrowserWorksButton() throws InterruptedException
     {
-        thread.sleep(1000);
+      //  (1000);
         googleSearchPage.confirm();
-        thread.sleep(1000);
+       // (1000);
         googleSearchPage.findHowBrowserWorksButtonAndCheckResult();
     }
 
@@ -96,10 +125,10 @@ public class GoogleSearchPageTests extends Initialization{
     public void checkifSentenceIsSearched() throws InterruptedException
     {
         googleSearchPage.checkIfPageIsOpened();
-        Thread thread = new Thread();
-        thread.sleep(1000);
+       // Thread thread = new Thread();
+       // (1000);
         googleSearchPage.confirm();
-        thread.sleep(1000);
+       // (1000);
         googleSearchPage.enterTextIntoInputAndSearch("asd asd asd asd");
     }
 
@@ -107,9 +136,9 @@ public class GoogleSearchPageTests extends Initialization{
     @TestRail(testCaseId = {})
     public void checkLuckyMeButton() throws InterruptedException
     {
-        thread.sleep(1000);
+       // (1000);
         googleSearchPage.confirm();
-        thread.sleep(1000);
+       // (1000);
         googleSearchPage.findLuckyMeButtonAndCheckResult();
     }
 
@@ -117,9 +146,9 @@ public class GoogleSearchPageTests extends Initialization{
     @TestRail(testCaseId = {})
     public void checkOnScreenKeyboard() throws InterruptedException
     {
-        thread.sleep(1000);
+       // (1000);
         googleSearchPage.confirm();
-        thread.sleep(1000);
+       // (1000);
         googleSearchPage.findOnScreenKeyboardButtonAndCheckResult();
     }
 
@@ -127,9 +156,9 @@ public class GoogleSearchPageTests extends Initialization{
     @TestRail(testCaseId = {})
     public void checkGmailButton() throws InterruptedException
     {
-        thread.sleep(1000);
+       // (1000);
         googleSearchPage.confirm();
-        thread.sleep(1000);
+      //  (1000);
         googleSearchPage.findGmailButtonAndCheckResult();
     }
 
@@ -137,9 +166,9 @@ public class GoogleSearchPageTests extends Initialization{
     @TestRail(testCaseId = {})
     public void checkImagesButton() throws InterruptedException
     {
-        thread.sleep(1000);
+      //  (1000);
         googleSearchPage.confirm();
-        thread.sleep(1000);
+      //  (1000);
         googleSearchPage.findImagesButtonAndCheckResult();
     }
 
@@ -147,9 +176,7 @@ public class GoogleSearchPageTests extends Initialization{
     @TestRail(testCaseId = {})
     public void checkPrivateButton() throws InterruptedException
     {
-        thread.sleep(1000);
         googleSearchPage.confirm();
-        thread.sleep(1000);
         googleSearchPage.findPrivateButtonAndCheck();
     }
 
@@ -157,9 +184,7 @@ public class GoogleSearchPageTests extends Initialization{
     @TestRail(testCaseId = {})
     public void checkTermsButton() throws InterruptedException
     {
-        thread.sleep(1000);
         googleSearchPage.confirm();
-        thread.sleep(1000);
         googleSearchPage.findTermsButtonAndCheck();
     }
 
@@ -168,9 +193,7 @@ public class GoogleSearchPageTests extends Initialization{
     @TestRail(testCaseId = {})
     public void checkAppsButton() throws InterruptedException
     {
-        thread.sleep(1000);
         googleSearchPage.confirm();
-        thread.sleep(1000);
         googleSearchPage.checkAppsButton();
     }
 
@@ -179,37 +202,18 @@ public class GoogleSearchPageTests extends Initialization{
     @TestRail(testCaseId = {})
     public void selectYoutubeIconInApps() throws InterruptedException
     {
-        Thread thread = new Thread();
-        thread.sleep(1000);
         googleSearchPage.confirm();
-        thread.sleep(1000);
         googleSearchPage.selectGoogleApp("");
-        thread.sleep(1000);
     }
 
     @Test
     @TestRail(testCaseId = {})
     public void checkIfPictureOfHolidaysIsShown() throws InterruptedException
     {
-        Thread thread = new Thread();
-        thread.sleep(1000);
         googleSearchPage.confirm();
-        thread.sleep(1000);
         googleSearchPage.checkHoliday();
-        thread.sleep(1000);
     }
 
-    @Test
-    @TestRail(testCaseId = {})
-    public void checkIfShareButtonIsVisible() throws InterruptedException
-    {
-        Thread thread = new Thread();
-        thread.sleep(1000);
-        googleSearchPage.confirm();
-        thread.sleep(1000);
-        googleSearchPage.isShareButtonIsVisible();
-        thread.sleep(1000);
-    }
 
 
     @AfterMethod

@@ -9,12 +9,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.By.ByXPath;
 import org.openqa.selenium.devtools.idealized.Javascript;
 import org.openqa.selenium.interactions.Actions;
@@ -30,7 +25,7 @@ import configuration.Initialization;
 public class GoogleSearchPage extends Initialization {
     
     public String searchInput = "//*[@name='q']";
-    public String searchButton = "/html/body/div[1]/div[3]/form/div[1]/div[1]/div[3]/center/input[1]";
+    public String searchButton = "/html/body/div[1]/div[3]/form/div[1]/div[1]/div[4]/center/input[1]";
 
     public GoogleSearchPage() {
         super();
@@ -43,10 +38,26 @@ public class GoogleSearchPage extends Initialization {
             driver.findElement(By.xpath("//*[@id='L2AGLb']")).click();
         }
         else{
-            
+            driver.quit();
         }
-        
+   
     }
+
+    public void checkSearchResult(String expectedTitle) throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(d -> ((JavascriptExecutor) d).executeScript("return document.readyState !== 'loading'"));
+        if(driver.getTitle() != null && driver.getTitle().contains(expectedTitle)){
+            System.out.println(driver.getTitle());
+            System.out.println("Web page is opened");
+        }
+        else{
+            System.out.println(driver.getTitle());
+            System.out.println("Web page could not open.");
+        }
+
+    }
+
+
 
     public void checkIfPageIsOpened() {
         System.out.println("Page title is : " + driver.getTitle());
@@ -56,6 +67,11 @@ public class GoogleSearchPage extends Initialization {
     public void enterTextIntoInputAndSearch(String type) {
         driver.findElement(By.xpath(searchInput)).sendKeys(type);
         driver.findElement(By.xpath(searchButton)).click();
+    }
+
+    public void enterTextIntoInputAndSearchByKey(String type) {
+        driver.findElement(By.xpath(searchInput)).sendKeys(type);
+        driver.findElement(By.xpath(searchInput)).sendKeys(Keys.RETURN);
     }
 
     public void selectGoogleApp(String appName){
@@ -81,14 +97,6 @@ public class GoogleSearchPage extends Initialization {
         }
     }
 
-    public boolean isShareButtonIsVisible(){
-        boolean check = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div[2]/button/img")).isDisplayed();
-        if(check){
-            return true;
-        }else{
-            return false;
-        }
-    }
 
     public void findAboutUsButtonAndCheckResult(){
         boolean check = driver.findElement(By.xpath("/html/body/div[1]/div[5]/div[2]/div[1]/a[1]")).isDisplayed();
@@ -120,7 +128,7 @@ public class GoogleSearchPage extends Initialization {
             driver.findElement(By.xpath("/html/body/div[1]/div[5]/div[2]/div[1]/a[3]")).click();
             String url = driver.getCurrentUrl();
             
-            assertEquals("https://www.google.pl/services/?subid=ww-ww-et-g-awa-a-g_hpbfoot1_1!o2&utm_source=google.com&utm_medium=referral&utm_campaign=google_hpbfooter&fg=1#?modal_active=none", url);
+            assertEquals("https://www.google.com/services/?subid=ww-ww-et-g-awa-a-g_hpbfoot1_1!o2&utm_source=google.com&utm_medium=referral&utm_campaign=google_hpbfooter&fg=1#?modal_active=none", url);
         }else{
             driver.quit();
         }
@@ -151,9 +159,9 @@ public class GoogleSearchPage extends Initialization {
     }
 
     public void findLuckyMeButtonAndCheckResult(){
-        boolean check = driver.findElement(By.xpath("/html/body/div[1]/div[3]/form/div[1]/div[1]/div[3]/center/input[2]")).isDisplayed();
+        boolean check = driver.findElement(By.xpath("/html/body/div[1]/div[3]/form/div[1]/div[1]/div[4]/center/input[2]")).isDisplayed();
         if(check){
-            driver.findElement(By.xpath("/html/body/div[1]/div[3]/form/div[1]/div[1]/div[3]/center/input[2]")).click();
+            driver.findElement(By.xpath("/html/body/div[1]/div[3]/form/div[1]/div[1]/div[4]/center/input[2]")).click();
             String url = driver.getCurrentUrl();
             
             assertEquals("https://www.google.com/doodles", url);
@@ -199,7 +207,7 @@ public class GoogleSearchPage extends Initialization {
             driver.findElement(By.xpath("/html/body/div[1]/div[5]/div[2]/div[2]/a[1]")).click();
             String url = driver.getCurrentUrl();
             
-            assertEquals("https://policies.google.com/privacy?hl=pl&fg=1", url);
+            assertEquals("https://sustainability.google/intl/pl/carbon-free/?utm_source=googlehpfooter&utm_medium=housepromos&utm_campaign=bottom-footer&utm_content=#year-1998", url);
         }else{
             driver.quit();
         }
