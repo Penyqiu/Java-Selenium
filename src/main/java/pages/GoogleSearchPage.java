@@ -78,8 +78,8 @@ public class GoogleSearchPage extends Initialization {
         WebElement apps = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(By.id("gbwa")));
         apps.click();
 
-        WebElement specifiedApp = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/c-wiz/div/div/c-wiz/div/div/ul[1]/li[8]/a/div[5]/span")));
-        specifiedApp.click();
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[starts-with(@src, 'https://ogs.google.com/widget/app')]")));
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(By.xpath("//li/a//span[text()='"+appName+"']"))).click();
     }
 
     public void checkAppsButton(){
@@ -214,9 +214,9 @@ public class GoogleSearchPage extends Initialization {
     }
 
     public void findTermsButtonAndCheck(){
-        boolean check = driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[5]/div[2]/div[2]/a[2]")).isDisplayed();
+        boolean check = driver.findElement(By.xpath("/html/body/div[1]/div[5]/div[2]/div[3]/a[2]")).isDisplayed();
         if(check){
-            driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[5]/div[2]/div[2]/a[2]")).click();
+            driver.findElement(By.xpath("/html/body/div[1]/div[5]/div[2]/div[3]/a[2]")).click();
             String url = driver.getCurrentUrl();
             
             assertEquals("https://policies.google.com/terms?hl=pl&fg=1", url);

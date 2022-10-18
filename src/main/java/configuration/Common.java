@@ -48,7 +48,6 @@ public class Common
 {
     
 public static Boolean postResultsToTestRail = false;
-public static Boolean debugInfo = true;
 
 
 
