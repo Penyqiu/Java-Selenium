@@ -1,5 +1,6 @@
 ## Getting Started
 Make sure you have drivers in C:\drivers\chromedriver.exe and C:\drivers\geckodriver.exe
+
 Make sure you have installed Java JDK and Maven
 
 ### Executing tests
